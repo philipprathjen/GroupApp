@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+<style>
+{% block style %}
+body{
+	background-color: #ffffff;
+}
+.navbar-static-top {
+	margin-bottom: 0px !important;
+}
+
+.jumbotron {
+	background-color:black;
+	color: #FFF;
+}
+.overlay {
+    position:absolute;
+    top:450px;‚
+    left:420px;
+    z-index:1;
+    color:#fff;
+}
+.primer_button{
+    position:absolute;
+    top:550px;
+    left:780px;
+}
+.btn-primary {
+    background: black !important;
+    color: #ffffff;
+    border-color: black; !important;
+}
+
+.video{
+	position:absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	min-width: 100%;
+	min-height: 100%;
+}
+
+{% endblock %}
+</style>
+
+<body>
+{% block content %}
+<div class='container'>
+	<div class='row'>
+		<div class="col">	
+			<!-- <video loop muted autoplay>
+			<source src='{% static "video/moon_city.mp4" %}' type="video/mp4">
+			</video> -->
+		</div>	
+	</div>
+</div>
+
+</div>
+
+<center><h1> Welcome to the CBS Cocktail Selector</h1></center>
+<center>
+<h3> The CBS Cocktail selector will let you enter up to three ingredients and provide suggestions.  
+	<br>
+	<strong>A new experience is one click away!</strong> 
+</h3>
+{% if request.user.is_authenticated %}	
+</center>
+<form action="cocktail_finder">
+	<!-- <input type="submit" value="Click to Find a Cocktail Recipe"> -->
+	<input class='btn btn-block btn-primary' type="submit" value="Explore the world of cocktails">  
+</form>
+{% endif %}
+{% if not request.user.is_authenticated %}	
+<form action="{% url 'registration_register' %}">
+	<!-- <input type="submit" value="Click to Find a Cocktail Recipe"> -->
+	<input class='btn btn-block btn-primary' type="submit" value="Click here to register">  
+</form>
+{% endif %}
+
+{% endblock %}
+
+
+</body>

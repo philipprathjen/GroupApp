@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+<body style="background: #333">
+
+
+{% if profile.picture %}
+<div class='row'>
+	<div class='col-sm-6'>
+		<img src='{{profile.picture.url}}' class="img-responsive profile_pic" width="450"/>
+	</div>
+	<div class='col-sm-6'>
+		<h1>Welcome to your profile!! </h1>
+		<br>
+		<div class='jumbotron user_name'>
+			<center>
+				<h2>{{profile.user}}</h2>
+			</center>
+		</div>
+	</div>
+</div>
+{% endif %}
+<br>
+<div class='jumbotron container' id='cocktail_list'>
+	<h2>The Cocktails you love: </h2>
+		<div>
+		{% for obj in liked %}
+			<div class='row'>
+				<div class='col-sm-4'>
+					<img src='{{obj.cocktail.picture.url}}' class="img-responsive profile_pic" width="100"/>
+				</div>
+				<div class='col-sm-8'>
+					<a href = '{{obj.cocktail.get_absolute_url}}' ><h3>{{obj.cocktail}}</h3></a>
+				</div>
+			</div><br>
+		{% endfor %}
+		</div>
+</div>
+</body>
+{% endblock %}
+
+
+
+
+
+

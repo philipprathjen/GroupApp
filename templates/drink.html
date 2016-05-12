@@ -1,0 +1,33 @@
+{% extends "base.html" %}	
+{% load staticfiles %}
+
+<body>
+{% block content%}
+<div class='container jumbotron' style="background-color: rgba(100, 72, 60, 0.9); color: white">
+	<center>
+	<h1>{{cocktail_name }}</h1>
+</center>	
+</div>
+<div class='row'>
+	<div class='container col-sm-6'>
+		<img src='{{ instance.picture.url }}' class="img-responsive" width="500"/>
+	</div>
+	<div class='jumbotron col-sm-6' style="background-color: rgba(100, 72, 60, 0.9); color: white">
+		{% for row in ingredients %}
+		<p>{{row}}</p>
+		{% endfor %}
+	</div>
+</div>
+<br>
+<div class='jumbotron' style="background-color: rgba(100, 72, 60, 0.9); color: white">
+	<center>
+	<h2>{{ recipe }}</h2>
+	</center>
+</div>
+
+<div class='background' style="top:0; position: absolute; z-index:-1; left:0">
+	<img src='https://static.pexels.com/photos/1486/wood-pattern-ground-parquet-floor.jpg' class="img-responsive"/>
+</div>
+
+{% endblock %}
+</body>
